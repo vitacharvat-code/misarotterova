@@ -125,18 +125,16 @@
         <div class="sluzby__card">
           <div class="sluzby__icon">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Maska komedie (vlevo, usmívá se) -->
-              <path d="M4 14a11 13 0 0 0 22 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M4 14a11 13 0 0 1 22 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="10" cy="12" r="1.5" fill="currentColor"/>
-              <circle cx="20" cy="12" r="1.5" fill="currentColor"/>
-              <path d="M10 20 Q15 25 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <!-- Maska tragedie (vpravo, zamračená) -->
-              <path d="M22 20a11 13 0 0 0 22 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M22 20a11 13 0 0 1 22 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="28" cy="18" r="1.5" fill="currentColor"/>
-              <circle cx="38" cy="18" r="1.5" fill="currentColor"/>
-              <path d="M29 30 Q33 26 38 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <!-- Tragedie (vzadu, vpravo dole) -->
+              <ellipse cx="30" cy="29" rx="13" ry="15" stroke="currentColor" stroke-width="2"/>
+              <circle cx="25" cy="25" r="1.8" fill="currentColor"/>
+              <circle cx="35" cy="25" r="1.8" fill="currentColor"/>
+              <path d="M25 36 Q30 31 35 36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <!-- Komedie (vpředu, vlevo nahoře) — výplň zakryje tragedie -->
+              <ellipse cx="19" cy="20" rx="13" ry="15" fill="white" stroke="currentColor" stroke-width="2"/>
+              <circle cx="14" cy="16" r="1.8" fill="currentColor"/>
+              <circle cx="24" cy="16" r="1.8" fill="currentColor"/>
+              <path d="M13 24 Q19 30 25 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
           <h3>Herectví</h3>
