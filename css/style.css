@@ -559,12 +559,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 .hlasy__card.is-visible { opacity: 1; transform: none; }
 .hlasy__card:hover { box-shadow: var(--shadow); }
 
-.hlasy__card-icon {
-  width: 36px; height: 36px;
-  color: var(--ink-soft);
-}
-.hlasy__card-icon svg { width: 100%; height: 100%; }
-
 .hlasy__card-info {
   display: flex;
   flex-direction: column;
