@@ -35,9 +35,13 @@
 
   <!-- ── HERO ── -->
   <section class="hero" id="hero">
-    <div class="hero__content">
-      <h1 class="hero__name">Míša<br/>Rotterová</h1>
+    <div class="hero__bg">
+      <img src="img/gallery1.webp" alt="Míša Rotterová – Divadlo Radost" loading="eager" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content container">
       <p class="hero__tagline">Vaše moderátorka pro každou příležitost</p>
+      <h1 class="hero__name">Míša<br/>Rotterová</h1>
       <p class="hero__roles">
         <span>Zpěvačka</span>
         <span class="dot">·</span>
@@ -45,13 +49,7 @@
         <span class="dot">·</span>
         <span>Lektorka</span>
       </p>
-      <a href="#kontakt" class="btn btn--dark">Domluvit moderování</a>
-    </div>
-    <div class="hero__photo">
-      
-        
-        <img src="img/gallery1.webp" alt="Míša Rotterová – Divadlo Radost" loading="eager" />
-      
+      <a href="#kontakt" class="btn btn--light">Domluvit moderování</a>
     </div>
   </section>
 
@@ -537,11 +535,17 @@
       });
     });
 
-    // Sticky nav stín
+    // Nav – světlá nad hero, tmavá po scrollu
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('nav--scrolled', window.scrollY > 20);
-    });
+    const heroEl = document.getElementById('hero');
+    function updateNav() {
+      const heroBottom = heroEl.getBoundingClientRect().bottom;
+      const overHero = heroBottom > 60;
+      nav.classList.toggle('nav--light', overHero);
+      nav.classList.toggle('nav--scrolled', !overHero && window.scrollY > 20);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
 
     // Smooth scroll highlight aktivní sekce
     const sections = document.querySelectorAll('section[id]');
