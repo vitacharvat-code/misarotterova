@@ -237,6 +237,9 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   z-index: 1;
   padding-top: calc(var(--nav-h) + 2rem);
   padding-bottom: 5.5rem;
+}
+
+.hero__text {
   max-width: 520px;
 }
 
@@ -921,7 +924,8 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
       transparent 100%
     );
   }
-  .hero__content { padding-bottom: 4rem; max-width: 100%; }
+  .hero__content { padding-bottom: 4rem; }
+  .hero__text { max-width: 100%; }
   .hero__name { font-size: clamp(2.8rem, 12vw, 4rem); }
   .hero__bg img { object-position: center top; }
 
