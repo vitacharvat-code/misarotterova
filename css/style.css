@@ -211,14 +211,22 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   color: var(--ink);
   margin-bottom: 1.2rem;
 }
+.hero__tagline {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  font-weight: 300;
+  color: var(--ink-mid);
+  margin-bottom: 1rem;
+  letter-spacing: -.01em;
+}
+
 .hero__roles {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: .4rem .6rem;
-  font-size: 1rem;
-  font-weight: 300;
-  color: var(--ink-mid);
+  font-size: .875rem;
+  font-weight: 400;
+  color: var(--ink-soft);
   margin-bottom: 2.5rem;
   letter-spacing: .01em;
 }
@@ -267,6 +275,10 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
+.sluzby__grid--duo {
+  grid-template-columns: 3fr 2fr;
+  align-items: stretch;
+}
 
 .sluzby__card {
   background: var(--bg-alt);
@@ -295,6 +307,65 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 .sluzby__card--accent .sluzby__list li { color: rgba(255,255,255,.72); }
 .sluzby__card--accent .sluzby__list li::before { background: rgba(255,255,255,.4); }
 .sluzby__card--accent strong { color: var(--white); }
+
+/* Primární karta – moderování */
+.sluzby__card--primary { justify-content: flex-start; }
+.sluzby__card--primary .btn--outline {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  padding: .75rem 1.75rem;
+  border-radius: 100px;
+  font-size: .9rem;
+  font-weight: 500;
+  border: 1.5px solid rgba(255,255,255,.35);
+  color: var(--white);
+  width: fit-content;
+  transition: var(--transition);
+}
+.sluzby__card--primary .btn--outline:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.6);
+}
+
+/* Secondary karta – další služby */
+.sluzby__card--secondary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  padding: 2rem;
+}
+
+.sluzby__sub {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+}
+.sluzby__sub-icon {
+  width: 32px; height: 32px;
+  flex-shrink: 0;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.sluzby__sub-icon svg { width: 100%; height: 100%; }
+.sluzby__sub h4 {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: .3rem;
+}
+.sluzby__sub p {
+  font-size: .85rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+.sluzby__divider {
+  height: 1px;
+  background: rgba(0,0,0,.07);
+}
 
 .sluzby__icon {
   width: 44px; height: 44px;
@@ -738,7 +809,8 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 /* Tablet */
 @media (max-width: 1024px) {
-  .sluzby__grid {
+  .sluzby__grid,
+  .sluzby__grid--duo {
     grid-template-columns: repeat(2, 1fr);
   }
   .galerie__grid {
@@ -822,7 +894,8 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   .galerie__item--wide { grid-column: span 2; }
 
   /* Služby */
-  .sluzby__grid { grid-template-columns: 1fr; }
+  .sluzby__grid,
+  .sluzby__grid--duo { grid-template-columns: 1fr; }
 
   /* Album */
   .album__grid { columns: 2; }
