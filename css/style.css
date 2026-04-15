@@ -244,11 +244,13 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 }
 
 .hero__tagline {
-  font-size: clamp(.95rem, 2vw, 1.15rem);
-  font-weight: 300;
-  color: rgba(255,255,255,.6);
-  margin-bottom: .75rem;
-  letter-spacing: .01em;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  font-weight: 400;
+  color: rgba(255,255,255,.75);
+  margin-bottom: .85rem;
+  letter-spacing: .02em;
 }
 
 .hero__name {
