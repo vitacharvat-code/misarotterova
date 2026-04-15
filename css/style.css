@@ -259,59 +259,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 .o-mne__portrait img { object-position: center top; }
 
 
-/* ── ČASOVÁ OSA ── */
-.timeline {
-  margin-top: 4rem;
-  max-width: 640px;
-  position: relative;
-}
-
-/* Vertikální linka */
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 52px;
-  top: 6px; bottom: 6px;
-  width: 1px;
-  background: rgba(0,0,0,.1);
-}
-
-.timeline__item {
-  display: grid;
-  grid-template-columns: 52px 1.5rem 1fr;
-  align-items: flex-start;
-  gap: 0;
-  margin-bottom: 1.5rem;
-}
-.timeline__item:last-child { margin-bottom: 0; }
-
-.timeline__year {
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .07em;
-  color: var(--ink-soft);
-  text-align: right;
-  padding-top: 3px;
-  padding-right: .5rem;
-}
-
-.timeline__dot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--ink);
-  border: 2px solid var(--bg-alt);
-  box-shadow: 0 0 0 1px var(--ink);
-  margin: 5px auto 0;
-  position: relative;
-  z-index: 1;
-}
-
-.timeline__text {
-  font-size: .875rem;
-  color: var(--ink-mid);
-  line-height: 1.6;
-  padding-left: .75rem;
-}
 
 
 /* ── SLUŽBY ── */
