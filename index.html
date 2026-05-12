@@ -58,7 +58,7 @@
   <!-- ── CITÁT ── -->
   <section class="vyrok">
     <div class="container container--narrow">
-      <p class="vyrok__text">Pokud to chcete jinak, chcete moderátora, na kterého budete s úsměvem na rtech vzpomínat ještě dlouho, ozvěte se.</p>
+      <p class="vyrok__text">Pokud to chcete jinak, chcete moderátora, na kterého budete s úsměvem na rtech vzpomínat ještě dlouho, ozvěte&nbsp;se.</p>
     </div>
   </section>
 
@@ -565,7 +565,7 @@
       const heroBottom = heroEl.getBoundingClientRect().bottom;
       const overHero = heroBottom > 60;
       nav.classList.toggle('nav--light', overHero);
-      nav.classList.toggle('nav--scrolled', !overHero && window.scrollY > 20);
+      nav.classList.toggle('nav--scrolled', !overHero && window.scrollY > 0);
     }
     window.addEventListener('scroll', updateNav, { passive: true });
     updateNav();
