@@ -562,10 +562,9 @@
     const nav = document.getElementById('nav');
     const heroEl = document.getElementById('hero');
     function updateNav() {
-      const heroBottom = heroEl.getBoundingClientRect().bottom;
-      const overHero = heroBottom > 60;
-      nav.classList.toggle('nav--light', overHero);
-      nav.classList.toggle('nav--scrolled', !overHero && window.scrollY > 0);
+      const atTop = window.scrollY === 0;
+      nav.classList.toggle('nav--light', atTop);
+      nav.classList.toggle('nav--scrolled', !atTop);
     }
     window.addEventListener('scroll', updateNav, { passive: true });
     updateNav();
