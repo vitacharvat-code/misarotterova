@@ -353,7 +353,7 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 .vyrok__text {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
-  font-size: clamp(1.35rem, 2.8vw, 1.95rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
   color: var(--ink);
   text-align: center;
   line-height: 1.55;
