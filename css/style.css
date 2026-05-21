@@ -258,7 +258,15 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 .hero__name {
   color: var(--white);
-  margin-bottom: 1.25rem;
+  margin-bottom: .75rem;
+}
+
+.hero__role-primary {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 500;
+  color: rgba(255,255,255,.95);
+  letter-spacing: .01em;
+  margin-bottom: .6rem;
 }
 
 .hero__roles {
