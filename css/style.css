@@ -492,6 +492,31 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   background: var(--ink-soft);
 }
 
+.sluzby__sublist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-top: .5rem;
+}
+.sluzby__sublist li {
+  font-size: .88rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  padding-left: .9rem;
+  position: relative;
+}
+.sluzby__sublist li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--ink-soft);
+}
+.sluzby__sublist strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 
 
 
