@@ -368,14 +368,17 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   content: '\201C';
   font-family: 'Playfair Display', Georgia, serif;
   font-style: normal;
-  font-size: clamp(6rem, 12vw, 10rem);
+  font-size: clamp(14rem, 30vw, 22rem);
   line-height: 1;
   color: var(--ink);
-  opacity: .1;
+  opacity: .07;
   position: absolute;
-  top: -.5rem;
-  left: 0;
+  top: -2rem;
+  left: -1rem;
+  pointer-events: none;
+  z-index: 0;
 }
+.vyrok__text--playfair { position: relative; z-index: 1; }
 
 
 /* ── SLUŽBY ── */
