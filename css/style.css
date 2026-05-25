@@ -353,21 +353,28 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   border-bottom: 1px solid var(--bg-alt);
 }
 .vyrok__text {
-  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-  color: var(--ink);
-  text-align: center;
-  line-height: 1.55;
-  max-width: 820px;
-  margin: 0 auto;
-}
-.vyrok__text--caveat {
-  font-family: 'Caveat', cursive;
-  font-weight: 500;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-}
-.vyrok__text--playfair {
   font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 3rem;
+}
+.vyrok__text--playfair::before {
+  content: '\201C';
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: normal;
+  font-size: clamp(6rem, 12vw, 10rem);
+  line-height: 1;
+  color: var(--ink);
+  opacity: .1;
+  position: absolute;
+  top: -.5rem;
+  left: 0;
 }
 
 
