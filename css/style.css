@@ -9,12 +9,12 @@
 :root {
   --white:      #ffffff;
   --bg:         #fafafa;
-  --bg-alt:     #f4f4f2;
+  --bg-alt:     #f0fafd;
   --ink:        #1a1a1a;
   --ink-mid:    #4a4a4a;
   --ink-soft:   #8a8a8a;
-  --accent:     #1a1a1a;
-  --accent-hl:  #e8e4df;
+  --accent:     #0891b2;
+  --accent-hl:  #e0f7fa;
   --radius-sm:  8px;
   --radius:     16px;
   --radius-lg:  24px;
@@ -92,7 +92,7 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--accent);
   margin-bottom: 1rem;
 }
 .section__title {
@@ -176,13 +176,13 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 .nav__cta {
   padding: .55rem 1.4rem !important;
-  background: var(--ink);
+  background: var(--accent);
   color: var(--white) !important;
   border-radius: 100px;
   transition: background var(--transition), transform var(--transition) !important;
 }
 .nav__cta::after { display: none !important; }
-.nav__cta:hover { background: #333 !important; transform: translateY(-1px); }
+.nav__cta:hover { background: #0e7490 !important; transform: translateY(-1px); }
 
 .nav__burger {
   display: none;
@@ -576,9 +576,9 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   color: var(--ink);
 }
 .album__filter.is-active {
-  background: var(--ink);
+  background: var(--accent);
   color: var(--white);
-  border-color: var(--ink);
+  border-color: var(--accent);
 }
 
 .album__grid {
@@ -612,6 +612,36 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   background: #000;
 }
 .album__video-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* ── VIDEO ZÁLOŽKA ── */
+.album__video-section {
+  display: none;
+}
+.album__video-section.is-active {
+  display: block;
+}
+.album__video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.album__video-embed {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: #000;
+}
+.album__video-embed iframe {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;

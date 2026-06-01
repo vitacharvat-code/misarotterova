@@ -211,6 +211,7 @@
         <button class="album__filter" data-filter="mood">Mood</button>
         <button class="album__filter" data-filter="pred-kamerou">Před kamerou</button>
         <button class="album__filter" data-filter="zpev">Zpěv</button>
+        <button class="album__filter" data-filter="video">▶ Video</button>
       </div>
 
       <div class="album__grid" id="albumGrid">
@@ -276,6 +277,22 @@
         <div class="album__item" data-category="zpev"><img src="img/gallery/zpev/11.webp" alt="Zpěv" loading="lazy" /><div class="album__overlay"><span>Zpěv</span></div></div>
         <div class="album__item" data-category="zpev"><img src="img/gallery/zpev/12.webp" alt="Zpěv" loading="lazy" /><div class="album__overlay"><span>Zpěv</span></div></div>
       </div>
+
+      <!-- VIDEO SEKCE -->
+      <div class="album__video-section" id="albumVideoSection">
+        <div class="album__video-list">
+          <div class="album__video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/V6LqdYKvc5M"
+              title="Míša Rotterová – video ukázka"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- LIGHTBOX -->
@@ -572,6 +589,8 @@
     // ── ALBUM FILTRY ──
     const filters = document.querySelectorAll('.album__filter');
     const albumItems = document.querySelectorAll('.album__item');
+    const albumGrid = document.getElementById('albumGrid');
+    const albumVideoSection = document.getElementById('albumVideoSection');
 
     function showRandom20() {
       const all = [...albumItems];
@@ -586,6 +605,16 @@
       });
     }
 
+    function showPhotoGrid() {
+      albumGrid.style.display = '';
+      albumVideoSection.classList.remove('is-active');
+    }
+
+    function showVideoSection() {
+      albumGrid.style.display = 'none';
+      albumVideoSection.classList.add('is-active');
+    }
+
     // Při načtení stránky zobraz 20 náhodných
     showRandom20();
 
@@ -594,14 +623,19 @@
         filters.forEach(b => b.classList.remove('is-active'));
         btn.classList.add('is-active');
         const f = btn.dataset.filter;
-        if (f === 'all') {
-          showRandom20();
+        if (f === 'video') {
+          showVideoSection();
         } else {
-          albumItems.forEach((item, i) => {
-            const show = item.dataset.category === f;
-            item.style.setProperty('--delay', (i % 4) * 60 + 'ms');
-            item.classList.toggle('is-hidden', !show);
-          });
+          showPhotoGrid();
+          if (f === 'all') {
+            showRandom20();
+          } else {
+            albumItems.forEach((item, i) => {
+              const show = item.dataset.category === f;
+              item.style.setProperty('--delay', (i % 4) * 60 + 'ms');
+              item.classList.toggle('is-hidden', !show);
+            });
+          }
         }
       });
     });
