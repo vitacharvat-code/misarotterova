@@ -8,13 +8,13 @@
 
 :root {
   --white:      #ffffff;
-  --bg:         #fafafa;
-  --bg-alt:     #f0fafd;
+  --bg:         #ffffff;
+  --bg-alt:     #f5ede9;
   --ink:        #1a1a1a;
   --ink-mid:    #4a4a4a;
   --ink-soft:   #8a8a8a;
-  --accent:     #0891b2;
-  --accent-hl:  #e0f7fa;
+  --accent:     #e8503a;
+  --accent-hl:  #fde8e4;
   --radius-sm:  8px;
   --radius:     16px;
   --radius-lg:  24px;
@@ -182,7 +182,7 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   transition: background var(--transition), transform var(--transition) !important;
 }
 .nav__cta::after { display: none !important; }
-.nav__cta:hover { background: #0e7490 !important; transform: translateY(-1px); }
+.nav__cta:hover { background: #cc3e2a !important; transform: translateY(-1px); }
 
 .nav__burger {
   display: none;
