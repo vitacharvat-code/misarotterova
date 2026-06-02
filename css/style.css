@@ -417,7 +417,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 }
 .sluzby__card--accent h3 { color: var(--white); }
 .sluzby__card--accent p { color: rgba(255,255,255,.72); }
-.sluzby__card--accent .sluzby__icon { color: rgba(255,255,255,.8); }
 .sluzby__card--accent .sluzby__list li { color: rgba(255,255,255,.72); }
 .sluzby__card--accent .sluzby__list li::before { background: rgba(255,255,255,.4); }
 .sluzby__card--accent strong { color: var(--white); }
@@ -457,13 +456,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   align-items: flex-start;
   padding: 1.25rem 0;
 }
-.sluzby__sub-icon {
-  width: 32px; height: 32px;
-  flex-shrink: 0;
-  color: var(--ink-soft);
-  margin-top: 2px;
-}
-.sluzby__sub-icon svg { width: 100%; height: 100%; }
 .sluzby__sub h4 {
   font-size: .95rem;
   font-weight: 600;
@@ -481,11 +473,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   background: rgba(0,0,0,.07);
 }
 
-.sluzby__icon {
-  width: 44px; height: 44px;
-  color: var(--ink);
-}
-.sluzby__icon svg { width: 100%; height: 100%; }
 
 .sluzby__list {
   margin-top: auto;
