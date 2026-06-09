@@ -767,12 +767,27 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 /* ── REFERENCE SLIDER ── */
 .ref-slider {
-  --peek: 140px;
-  --slide-gap: 1.5rem;
-  max-width: 1020px;
+  --peek: 60px;          /* kolik px sousední karty kouká do fade zóny */
+  --slide-gap: 1.5rem;   /* = 24 px */
+  max-width: 1080px;
   margin: 0 auto;
   margin-bottom: 4rem;
   overflow: hidden;
+  /* fade do ztracena vlevo i vpravo */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 13%,
+    black 87%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 13%,
+    black 87%,
+    transparent 100%
+  );
 }
 .ref-slider__viewport {
   overflow: visible;
@@ -780,13 +795,12 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 .ref-slider__track {
   display: flex;
   gap: var(--slide-gap);
-  /* padding-left posune první kartu tak, aby levo i pravo mělo 'peek' px */
+  /* peek + gap → karta n>0 má vlevo vždy 'peek' px sousedy */
   padding-left: calc(var(--peek) + var(--slide-gap));
-  /* transition řídí JS, aby šel nekonečný loop bez záblesku */
 }
 .reference__card {
-  /* šířka = kontejner − 2×(peek+gap) */
-  flex: 0 0 calc(100% - 2 * (var(--peek) + var(--slide-gap)));
+  /* dvě karty se vejdou přesně do kontejneru (50 % − polovina mezery) */
+  flex: 0 0 calc(50% - var(--slide-gap) / 2);
   min-width: 0;
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -1177,9 +1191,16 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   /* Album */
   .album__grid { columns: 2; }
 
-  /* Reference – menší peek na mobilu */
-  .ref-slider { --peek: 44px; }
-  .reference__card { padding: 1.5rem 1.25rem; }
+  /* Reference – 1 karta na mobilu, menší fade zóna */
+  .ref-slider {
+    --peek: 32px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+  .reference__card {
+    flex: 0 0 calc(82% - var(--slide-gap) / 2);
+    padding: 1.5rem 1.25rem;
+  }
 
   /* Audio */
   .hlasy__grid { grid-template-columns: 1fr; }
