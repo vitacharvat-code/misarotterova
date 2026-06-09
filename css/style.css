@@ -767,12 +767,12 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 /* ── REFERENCE SLIDER ── */
 .ref-slider {
-  --peek: 80px;
+  --peek: 140px;
   --slide-gap: 1.5rem;
-  max-width: 960px;
+  max-width: 1020px;
   margin: 0 auto;
   margin-bottom: 4rem;
-  overflow: hidden; /* oříznutí karet mimo viewport */
+  overflow: hidden;
 }
 .ref-slider__viewport {
   overflow: visible;
@@ -780,17 +780,17 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 .ref-slider__track {
   display: flex;
   gap: var(--slide-gap);
-  /* padding-left = peek + gap → karta n>0 má vlevo vždy 'peek' px souseda */
+  /* padding-left posune první kartu tak, aby levo i pravo mělo 'peek' px */
   padding-left: calc(var(--peek) + var(--slide-gap));
-  transition: transform .45s cubic-bezier(.4,0,.2,1);
+  /* transition řídí JS, aby šel nekonečný loop bez záblesku */
 }
 .reference__card {
-  /* šířka karty = kontejner − 2×(peek+gap) */
+  /* šířka = kontejner − 2×(peek+gap) */
   flex: 0 0 calc(100% - 2 * (var(--peek) + var(--slide-gap)));
   min-width: 0;
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 2.5rem 3rem;
+  padding: 2.25rem 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1178,8 +1178,8 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   .album__grid { columns: 2; }
 
   /* Reference – menší peek na mobilu */
-  .ref-slider { --peek: 36px; }
-  .reference__card { padding: 1.75rem 1.5rem; }
+  .ref-slider { --peek: 44px; }
+  .reference__card { padding: 1.5rem 1.25rem; }
 
   /* Audio */
   .hlasy__grid { grid-template-columns: 1fr; }

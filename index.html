@@ -592,36 +592,80 @@
     window.addEventListener('scroll', updateNav, { passive: true });
     updateNav();
 
-    // ── Reference slider ──
+    // ── Reference slider – nekonečný kolotoč ──
     (function() {
-      const track = document.getElementById('refTrack');
-      const prevBtn = document.getElementById('refPrev');
-      const nextBtn = document.getElementById('refNext');
-      const dotsContainer = document.getElementById('refDots');
+      const track      = document.getElementById('refTrack');
+      const prevBtn    = document.getElementById('refPrev');
+      const nextBtn    = document.getElementById('refNext');
+      const dotsCont   = document.getElementById('refDots');
       if (!track) return;
 
-      const cards = track.querySelectorAll('.reference__card');
-      const dots  = dotsContainer.querySelectorAll('.ref-slider__dot');
-      let current = 0;
+      const origCards = Array.from(track.querySelectorAll('.reference__card'));
+      const N = origCards.length;
+      const dots = dotsCont ? Array.from(dotsCont.querySelectorAll('.ref-slider__dot')) : [];
+
+      // Klonuj poslední kartu na začátek, první kartu na konec
+      const headClone = origCards[N - 1].cloneNode(true);
+      const tailClone = origCards[0].cloneNode(true);
+      headClone.setAttribute('aria-hidden', 'true');
+      tailClone.setAttribute('aria-hidden', 'true');
+      track.prepend(headClone);
+      track.append(tailClone);
+      // Pořadí: [klon N] [1] [2] ... [N] [klon 1]
+      // Index 0 = klon poslední, 1..N = reálné karty, N+1 = klon první
+
+      let current = 1;    // začínáme na první reálné kartě
+      let busy = false;
 
       function stepPx() {
-        // šířka karty + gap mezi kartami (1.5rem = 24px při base 16px)
         const gap = parseFloat(window.getComputedStyle(track).gap) || 24;
-        return cards[0].offsetWidth + gap;
+        return track.children[0].offsetWidth + gap;
       }
 
-      function goTo(index) {
-        current = ((index % cards.length) + cards.length) % cards.length;
-        track.style.transform = `translateX(-${current * stepPx()}px)`;
-        dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
+      function setPos(idx, animate) {
+        track.style.transition = animate
+          ? 'transform .45s cubic-bezier(.4,0,.2,1)'
+          : 'none';
+        track.style.transform = `translateX(-${idx * stepPx()}px)`;
       }
+
+      function updateDots(realIdx) {
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === realIdx));
+      }
+
+      function goTo(idx) {
+        if (busy) return;
+        busy = true;
+        current = idx;
+        setPos(current, true);
+        // dot index: current 1..N → dot 0..N-1; klon 0 → dot N-1, klon N+1 → dot 0
+        updateDots(((current - 1) % N + N) % N);
+      }
+
+      track.addEventListener('transitionend', () => {
+        if (current === 0) {
+          // klon poslední → skoč na reálnou poslední (bez animace)
+          current = N;
+          setPos(current, false);
+          void track.offsetWidth; // force reflow
+        } else if (current === N + 1) {
+          // klon první → skoč na reálnou první (bez animace)
+          current = 1;
+          setPos(current, false);
+          void track.offsetWidth;
+        }
+        busy = false;
+      });
 
       prevBtn.addEventListener('click', () => goTo(current - 1));
       nextBtn.addEventListener('click', () => goTo(current + 1));
-      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i + 1)));
 
-      // přepočet pozice po resize (breakpoint mění --peek)
-      window.addEventListener('resize', () => goTo(current));
+      // Inicializace – karta 1, bez animace
+      setPos(current, false);
+      updateDots(0);
+
+      window.addEventListener('resize', () => setPos(current, false));
     })();
 
     // Smooth scroll highlight aktivní sekce
