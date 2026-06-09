@@ -604,15 +604,24 @@
       const dots  = dotsContainer.querySelectorAll('.ref-slider__dot');
       let current = 0;
 
+      function stepPx() {
+        // šířka karty + gap mezi kartami (1.5rem = 24px při base 16px)
+        const gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+        return cards[0].offsetWidth + gap;
+      }
+
       function goTo(index) {
         current = ((index % cards.length) + cards.length) % cards.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
+        track.style.transform = `translateX(-${current * stepPx()}px)`;
         dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
       }
 
       prevBtn.addEventListener('click', () => goTo(current - 1));
       nextBtn.addEventListener('click', () => goTo(current + 1));
       dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+      // přepočet pozice po resize (breakpoint mění --peek)
+      window.addEventListener('resize', () => goTo(current));
     })();
 
     // Smooth scroll highlight aktivní sekce

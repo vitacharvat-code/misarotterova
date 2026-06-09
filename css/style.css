@@ -767,20 +767,27 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 /* ── REFERENCE SLIDER ── */
 .ref-slider {
-  max-width: 760px;
+  --peek: 80px;
+  --slide-gap: 1.5rem;
+  max-width: 960px;
   margin: 0 auto;
   margin-bottom: 4rem;
+  overflow: hidden; /* oříznutí karet mimo viewport */
 }
 .ref-slider__viewport {
-  overflow: hidden;
-  border-radius: var(--radius-lg);
+  overflow: visible;
 }
 .ref-slider__track {
   display: flex;
+  gap: var(--slide-gap);
+  /* padding-left = peek + gap → karta n>0 má vlevo vždy 'peek' px souseda */
+  padding-left: calc(var(--peek) + var(--slide-gap));
   transition: transform .45s cubic-bezier(.4,0,.2,1);
 }
 .reference__card {
-  min-width: 100%;
+  /* šířka karty = kontejner − 2×(peek+gap) */
+  flex: 0 0 calc(100% - 2 * (var(--peek) + var(--slide-gap)));
+  min-width: 0;
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: 2.5rem 3rem;
@@ -1170,7 +1177,8 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   /* Album */
   .album__grid { columns: 2; }
 
-  /* Reference */
+  /* Reference – menší peek na mobilu */
+  .ref-slider { --peek: 36px; }
   .reference__card { padding: 1.75rem 1.5rem; }
 
   /* Audio */
