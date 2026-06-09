@@ -408,17 +408,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 }
 .vyrok__text--playfair { position: relative; z-index: 1; }
 .vyrok { overflow: hidden; position: relative; }
-/* Dekorativní kruh za citátem – bílý na teplém pozadí */
-.vyrok::after {
-  content: '';
-  position: absolute;
-  width: 380px; height: 380px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .35);
-  right: -120px; top: 50%; transform: translateY(-50%);
-  pointer-events: none;
-  z-index: 0;
-}
 
 
 /* ── SLUŽBY ── */
