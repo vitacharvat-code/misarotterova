@@ -326,8 +326,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 
 /* ── O MNĚ ── */
-.o-mne { background: var(--bg-alt); }
-
 .o-mne__columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
