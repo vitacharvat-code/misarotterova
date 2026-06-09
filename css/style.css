@@ -28,6 +28,35 @@
 
 html { scroll-behavior: smooth; font-size: 16px; }
 
+/* ── WAVE DIVIDERS ── */
+.wave {
+  display: block;
+  line-height: 0;
+  overflow: hidden;
+}
+.wave svg {
+  display: block;
+  width: 100%;
+  height: clamp(50px, 6vw, 90px);
+}
+/* Teplá (bg-alt) → bílá */
+.wave--warm-white { background: var(--white); }
+/* Bílá → teplá (bg-alt) */
+.wave--white-warm { background: var(--bg-alt); }
+
+/* Vlnka na přechodu hero → teplá sekce */
+.hero__wave {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  line-height: 0;
+  z-index: 3;
+}
+.hero__wave svg {
+  display: block;
+  width: 100%;
+  height: clamp(50px, 6vw, 90px);
+}
+
 body {
   font-family: var(--font);
   background: var(--white);
@@ -351,8 +380,7 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 /* ── CITÁT ── */
 .vyrok {
   padding: 4.5rem 0;
-  background: var(--white);
-  border-bottom: 1px solid var(--bg-alt);
+  background: var(--bg-alt);
 }
 .vyrok__text {
   font-family: 'Playfair Display', Georgia, serif;
@@ -382,22 +410,21 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 }
 .vyrok__text--playfair { position: relative; z-index: 1; }
 .vyrok { overflow: hidden; position: relative; }
-/* Dekorativní kruh za citátem */
+/* Dekorativní kruh za citátem – bílý na teplém pozadí */
 .vyrok::after {
   content: '';
   position: absolute;
   width: 380px; height: 380px;
   border-radius: 50%;
-  background: var(--accent-hl);
+  background: rgba(255, 255, 255, .35);
   right: -120px; top: 50%; transform: translateY(-50%);
   pointer-events: none;
   z-index: 0;
-  opacity: .7;
 }
 
 
 /* ── SLUŽBY ── */
-.sluzby { position: relative; overflow: hidden; }
+.sluzby { position: relative; overflow: hidden; background: var(--bg-alt); }
 .sluzby::after {
   content: '';
   position: absolute;
@@ -419,7 +446,7 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 }
 
 .sluzby__card {
-  background: var(--bg-alt);
+  background: var(--white);
   border-radius: var(--radius-lg);
   padding: 2.8rem 2.5rem;
   display: flex;
