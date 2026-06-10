@@ -38,6 +38,8 @@ html { scroll-behavior: smooth; font-size: 16px; }
   line-height: 0;
   overflow: hidden;
   position: relative; /* nutné pro ::after tečky */
+  margin-top: -1px;   /* eliminuje sub-pixel gap na mobilech */
+  margin-bottom: -1px;
 }
 .wave svg {
   display: block;
@@ -817,18 +819,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   background: var(--bg-alt);
   position: relative;
   overflow: hidden;
-}
-/* Dekorativní outlined kruh vlevo dole */
-.reference::before {
-  content: '';
-  position: absolute;
-  width: 320px; height: 320px;
-  border-radius: 50%;
-  border: 40px solid var(--accent-hl);
-  left: -130px; bottom: -80px;
-  pointer-events: none;
-  opacity: .65;
-  z-index: 0;
 }
 
 /* ── REFERENCE SLIDER ── */
