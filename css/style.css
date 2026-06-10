@@ -37,16 +37,34 @@ html { scroll-behavior: smooth; font-size: 16px; }
   display: block;
   line-height: 0;
   overflow: hidden;
+  position: relative; /* nutné pro ::after tečky */
 }
 .wave svg {
   display: block;
   width: 100%;
   height: clamp(50px, 6vw, 90px);
+  position: relative;
+  z-index: 0;
 }
 /* Teplá (bg-alt) → bílá */
 .wave--warm-white { background: var(--white); }
 /* Bílá → teplá (bg-alt) */
 .wave--white-warm { background: var(--bg-alt); }
+
+/* Tečky přesahující z bílé sekce až pod vlnku */
+.wave--white-warm::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* nad SVG, aby prosvítaly bílou výplní */
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(232, 80,  58, .065) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba( 94,158, 132, .065) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba( 78,127, 163, .065) 1.5px, transparent 1.5px);
+  background-size: 26px 26px, 26px 26px, 26px 26px;
+  background-position: 0 0, 8.67px 8.67px, 17.33px 17.33px;
+}
 
 /* Vlnka na přechodu hero → teplá sekce */
 .hero__wave {
