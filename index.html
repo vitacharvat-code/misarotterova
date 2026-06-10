@@ -734,7 +734,7 @@
     sections.forEach(s => observer.observe(s));
 
     // Animace prvků při scrollu
-    const animItems = document.querySelectorAll('.sluzby__card, .o-mne__columns, .album__item, .hlasy__card');
+    const animItems = document.querySelectorAll('.sluzby__card, .o-mne__columns, .album__item, .hlasy__card, .section__title');
     const animObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
