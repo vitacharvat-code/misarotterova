@@ -15,6 +15,10 @@
   --ink-soft:   #8a8a8a;
   --accent:     #e8503a;
   --accent-hl:  #fde8e4;
+  --green:      #5e9e84;
+  --green-hl:   #e2f0eb;
+  --blue:       #4e7fa3;
+  --blue-hl:    #ddeaf4;
   --radius-sm:  8px;
   --radius:     16px;
   --radius-lg:  24px;
@@ -194,8 +198,8 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   content: '';
   position: absolute;
   bottom: -3px; left: 0;
-  width: 0; height: 1px;
-  background: var(--ink);
+  width: 0; height: 1.5px;
+  background: var(--blue);
   transition: width var(--transition);
 }
 .nav__links a:hover,
@@ -417,9 +421,13 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   position: absolute;
   top: 2rem; right: 1.5rem;
   width: 200px; height: 200px;
-  background-image: radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
-  background-size: 18px 18px;
-  opacity: .14;
+  background-image:
+    radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px),
+    radial-gradient(circle, var(--green)  1.5px, transparent 1.5px),
+    radial-gradient(circle, var(--blue)   1.5px, transparent 1.5px);
+  background-size: 18px 18px, 18px 18px, 18px 18px;
+  background-position: 0 0, 6px 6px, 12px 12px;
+  opacity: .22;
   pointer-events: none;
   z-index: 0;
 }
@@ -465,13 +473,17 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   justify-content: center;
   width: 38px; height: 38px;
   border-radius: 50%;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--accent);
   font-size: .78rem;
   font-weight: 700;
   letter-spacing: .04em;
-  color: var(--ink);
+  color: var(--accent);
   flex-shrink: 0;
 }
+/* každá karta má jiný akcentní kroužek */
+.sluzby__card:nth-child(2) .sluzby__num { border-color: var(--green); color: var(--green); }
+.sluzby__card:nth-child(3) .sluzby__num { border-color: var(--blue);  color: var(--blue);  }
+.sluzby__card:nth-child(4) .sluzby__num { border-color: var(--green); color: var(--green); }
 
 /* Šipka ↗ */
 .sluzby__arrow {
@@ -484,6 +496,9 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   color: var(--accent);
   transform: translate(2px, -2px);
 }
+.sluzby__card:nth-child(2):hover .sluzby__arrow { color: var(--green); }
+.sluzby__card:nth-child(3):hover .sluzby__arrow { color: var(--blue); }
+.sluzby__card:nth-child(4):hover .sluzby__arrow { color: var(--green); }
 
 /* Nadpis – uppercase bold */
 .sluzby__card h3 {
@@ -860,6 +875,9 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   color: var(--accent-hl);
   font-family: Georgia, serif;
 }
+/* střídání barev uvozovek – korálová / zelená / modrá */
+.reference__card:nth-child(3n+2) .reference__quote { color: var(--green-hl); }
+.reference__card:nth-child(3n)   .reference__quote { color: var(--blue-hl);  }
 .reference__card p { font-size: .95rem; flex: 1; font-style: italic; }
 .reference__author {
   display: flex;
@@ -974,9 +992,13 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   position: absolute;
   bottom: 2.5rem; left: 1.5rem;
   width: 160px; height: 160px;
-  background-image: radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
-  background-size: 18px 18px;
-  opacity: .13;
+  background-image:
+    radial-gradient(circle, var(--blue)   1.5px, transparent 1.5px),
+    radial-gradient(circle, var(--green)  1.5px, transparent 1.5px),
+    radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
+  background-size: 18px 18px, 18px 18px, 18px 18px;
+  background-position: 0 0, 6px 6px, 12px 12px;
+  opacity: .22;
   pointer-events: none;
   z-index: 0;
 }
