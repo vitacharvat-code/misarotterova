@@ -119,6 +119,18 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 /* ── SECTION SHARED ── */
 .section { padding: 6rem 0; }
+
+/* Tříbarevný tečkový vzor pro bílé sekce (rgba = žádná opacity na obsahu) */
+.o-mne,
+.album,
+#kontakt {
+  background-image:
+    radial-gradient(circle, rgba(232, 80,  58, .065) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba( 94,158, 132, .065) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba( 78,127, 163, .065) 1.5px, transparent 1.5px);
+  background-size: 26px 26px, 26px 26px, 26px 26px;
+  background-position: 0 0, 8.67px 8.67px, 17.33px 17.33px;
+}
 .section__label {
   display: inline-block;
   font-size: .8rem;
@@ -980,27 +992,8 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 /* ── KONTAKT ── */
 
-/* Dekorativní tečky v kontakt sekci */
-#kontakt {
-  position: relative;
-  overflow: hidden;
-}
-#kontakt::before {
-  content: '';
-  position: absolute;
-  bottom: 2.5rem; left: 1.5rem;
-  width: 160px; height: 160px;
-  background-image:
-    radial-gradient(circle, var(--blue)   1.5px, transparent 1.5px),
-    radial-gradient(circle, var(--green)  1.5px, transparent 1.5px),
-    radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
-  background-size: 18px 18px, 18px 18px, 18px 18px;
-  background-position: 0 0, 6px 6px, 12px 12px;
-  opacity: .22;
-  pointer-events: none;
-  z-index: 0;
-}
-#kontakt > .container { position: relative; z-index: 1; }
+/* Kontakt */
+#kontakt { position: relative; overflow: hidden; }
 
 .kontakt__layout {
   display: grid;
