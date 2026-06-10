@@ -57,11 +57,11 @@ html { scroll-behavior: smooth; font-size: 16px; }
   font-weight: 700;
   letter-spacing: -.01em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--blue);
 }
 .marquee-strip__item::after {
   content: '✦';
-  color: var(--accent);
+  color: var(--white);
   font-size: .7em;
   flex-shrink: 0;
 }
