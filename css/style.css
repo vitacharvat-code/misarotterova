@@ -218,70 +218,79 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 }
 
 
-/* ── NAVIGATION ── */
+/* ── NAVIGATION (sidebar) ── */
+:root { --sidebar-w: 200px; }
+
+/* Obsah stránky odsazený o sidebar */
+body { padding-left: var(--sidebar-w); }
+
+/* Overlay pro zavření sidebaru na mobilu */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 149;
+}
+.nav-overlay.is-active { display: block; }
+
+/* Mobilní lišta – skrytá na desktopu */
+.mobile-bar { display: none; }
+
+/* Sidebar */
 .nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  height: var(--nav-h);
-  background: rgba(255,255,255,.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-.nav--scrolled {
-  border-bottom-color: rgba(0,0,0,.06);
-  box-shadow: var(--shadow-sm);
-}
-.nav--light {
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-.nav--light .nav__logo,
-.nav--light .nav__links a { color: rgba(255,255,255,.9); }
-.nav--light .nav__links a:hover,
-.nav--light .nav__links a.is-active { color: var(--white); }
-.nav--light .nav__links a::after { background: var(--white); }
-.nav--light .nav__cta {
-  background: rgba(255,255,255,.15) !important;
-  color: var(--white) !important;
-  border: 1px solid rgba(255,255,255,.3);
-}
-.nav--light .nav__cta:hover { background: rgba(255,255,255,.25) !important; }
-.nav--light .nav__burger span { background: var(--white); }
-.nav__inner {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  height: 100%;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--white);
+  border-right: 1px solid rgba(0,0,0,.07);
+  z-index: 150;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  transition: transform var(--transition);
+  overflow-y: auto;
+}
+.nav__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2.5rem 1.8rem;
 }
 .nav__logo {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -.01em;
-  white-space: nowrap;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.3;
+  margin-bottom: 0;
 }
 .nav__links {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: column;
+  gap: .25rem;
+  list-style: none;
+  padding: 0;
+  margin: auto 0; /* vertikální vycentrování */
 }
+.nav__links li { width: 100%; }
 .nav__links a {
-  font-size: .9rem;
+  display: block;
+  font-size: .88rem;
   font-weight: 400;
-  color: var(--ink-mid);
-  transition: color var(--transition);
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: .45rem 0;
   position: relative;
+  transition: color var(--transition);
+  letter-spacing: .01em;
 }
 .nav__links a::after {
   content: '';
   position: absolute;
-  bottom: -3px; left: 0;
+  left: 0; bottom: 0;
   width: 0; height: 1.5px;
   background: var(--blue);
   transition: width var(--transition);
@@ -292,20 +301,38 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 .nav__links a.is-active::after { width: 100%; }
 
 .nav__cta {
-  padding: .55rem 1.4rem !important;
+  display: inline-block;
+  margin-top: .75rem;
+  padding: .55rem 1.2rem !important;
   background: var(--accent);
   color: var(--white) !important;
   border-radius: 100px;
-  transition: background var(--transition), transform var(--transition) !important;
+  font-size: .85rem !important;
+  text-align: center;
+  transition: background var(--transition) !important;
 }
 .nav__cta::after { display: none !important; }
-.nav__cta:hover { background: #cc3e2a !important; transform: translateY(-1px); }
+.nav__cta:hover { background: #cc3e2a !important; }
 
+.nav__tagline {
+  font-size: .72rem;
+  color: var(--ink-soft);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  margin-top: 0;
+  opacity: .6;
+}
+
+/* Burger (používá se jen na mobilu) */
 .nav__burger {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 5px;
   padding: .5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 .nav__burger span {
   display: block;
@@ -1230,43 +1257,46 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 /* Mobile */
 @media (max-width: 768px) {
-  :root { --nav-h: 60px; }
+  /* Zruš sidebar odsazení */
+  body { padding-left: 0; }
+
+  /* Mobilní lišta nahoře */
+  .mobile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,.07);
+    padding: 0 1.2rem;
+    z-index: 160;
+  }
+  .mobile-bar .nav__logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+
+  /* Sidebar: skrytý, vysunutý vlevo */
+  .nav {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+    width: 260px;
+  }
+  .nav.is-open { transform: translateX(0); }
+
+  /* Tagline v sidebaru na mobilu schovat */
+  .nav__tagline { display: none; }
+
+  /* Posunout stránku dolů kvůli mobile-bar */
+  .hero { padding-top: 60px; }
+
   .section { padding: 4rem 0; }
   .section__title { margin-bottom: 2rem; }
-
-  /* Nav */
-  .nav__burger { display: flex; }
-  .nav__links {
-    position: fixed;
-    top: var(--nav-h); left: 0; right: 0;
-    background: var(--white);
-    flex-direction: column;
-    gap: 0;
-    padding: 1rem 0 2rem;
-    box-shadow: var(--shadow);
-    transform: translateY(-110%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform var(--transition), opacity var(--transition);
-  }
-  .nav__links.is-open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .nav__links li { width: 100%; }
-  .nav__links a {
-    display: block;
-    padding: .9rem 1.5rem;
-    font-size: 1rem;
-  }
-  .nav__links a::after { display: none; }
-  .nav__cta {
-    margin: .75rem 1.5rem 0 !important;
-    border-radius: var(--radius-sm) !important;
-    text-align: center !important;
-    padding: .9rem !important;
-  }
 
   /* Hero */
   .hero { align-items: flex-end; }

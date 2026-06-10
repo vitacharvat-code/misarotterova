@@ -15,21 +15,28 @@
 </head>
 <body>
 
-  <!-- ── NAVIGACE ── -->
+  <!-- ── NAVIGACE (sidebar) ── -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Mobilní lišta nahoře -->
+  <div class="mobile-bar" id="mobileBar">
+    <a href="#hero" class="nav__logo">Míša Rotterová</a>
+    <button class="nav__burger" id="burger" aria-label="Otevřít menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="#hero" class="nav__logo">Míša Rotterová</a>
-      <button class="nav__burger" id="burger" aria-label="Otevřít menu">
-        <span></span><span></span><span></span>
-      </button>
       <ul class="nav__links" id="navLinks">
         <li><a href="#o-mne">O mně</a></li>
         <li><a href="#sluzby">Služby</a></li>
         <li><a href="#album">Portfolio</a></li>
         <li><a href="#reference">Reference</a></li>
         <li><a href="#kontakt" class="nav__cta">Kontakt</a></li>
-
       </ul>
+      <p class="nav__tagline">Moderátorka · Zpěvačka · Herečka</p>
     </div>
   </nav>
 
@@ -596,32 +603,28 @@
     // Rok v patičce
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Hamburger menu
-    const burger = document.getElementById('burger');
+    // Sidebar – otevření / zavření
+    const burger  = document.getElementById('burger');
+    const nav     = document.getElementById('nav');
+    const overlay = document.getElementById('navOverlay');
     const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', () => {
-      navLinks.classList.toggle('is-open');
-      burger.classList.toggle('is-active');
-    });
 
-    // Zavřít menu po kliknutí na odkaz
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('is-open');
-        burger.classList.remove('is-active');
-      });
-    });
-
-    // Nav – světlá nad hero, tmavá po scrollu
-    const nav = document.getElementById('nav');
-    const heroEl = document.getElementById('hero');
-    function updateNav() {
-      const atTop = window.scrollY === 0;
-      nav.classList.toggle('nav--light', atTop);
-      nav.classList.toggle('nav--scrolled', !atTop);
+    function openNav() {
+      nav.classList.add('is-open');
+      overlay.classList.add('is-active');
+      burger.classList.add('is-active');
     }
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
+    function closeNav() {
+      nav.classList.remove('is-open');
+      overlay.classList.remove('is-active');
+      burger.classList.remove('is-active');
+    }
+
+    burger.addEventListener('click', () => nav.classList.contains('is-open') ? closeNav() : openNav());
+    overlay.addEventListener('click', closeNav);
+
+    // Zavřít po kliknutí na odkaz
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
 
     // ── Kinetic text – střídání rolí v hero ──
     (function() {
