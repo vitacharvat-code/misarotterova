@@ -48,16 +48,9 @@ html { scroll-behavior: smooth; font-size: 16px; }
 }
 /* Teplá (bg-alt) → bílá */
 .wave--warm-white { background: var(--white); }
-/* Bílá → teplá (bg-alt) */
-.wave--white-warm { background: var(--bg-alt); }
-
-/* Tečky přesahující z bílé sekce až pod vlnku */
-.wave--white-warm::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1; /* nad SVG, aby prosvítaly bílou výplní */
-  pointer-events: none;
+/* Bílá → teplá: SVG kreslí SPODNÍ růžovou plochu, bílá část = průhledná → tečky prosvítají */
+.wave--white-warm {
+  background-color: var(--white);
   background-image:
     radial-gradient(circle, rgba(232, 80,  58, .065) 1.5px, transparent 1.5px),
     radial-gradient(circle, rgba( 94,158, 132, .065) 1.5px, transparent 1.5px),
