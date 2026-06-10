@@ -196,21 +196,40 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   background-position: 0 0, 8.67px 8.67px, 17.33px 17.33px;
 }
 .section__label {
-  display: inline-block;
-  font-size: .8rem;
-  font-weight: 500;
-  letter-spacing: .12em;
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-.section__title {
-  margin-bottom: 3rem;
-  /* počáteční stav pro scroll animaci */
+  color: var(--blue);
+  line-height: 1.05;
+  margin-bottom: .75rem;
+  /* scroll animace */
   opacity: 0;
   transform: translateY(50px);
   transition: opacity .9s cubic-bezier(.4,0,.2,1),
               transform .9s cubic-bezier(.4,0,.2,1);
+}
+.section__label.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+h2.section__title,
+p.section__title,
+.section__title {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: .01em;
+  text-transform: none;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  /* scroll animace */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .9s .12s cubic-bezier(.4,0,.2,1),
+              transform .9s .12s cubic-bezier(.4,0,.2,1);
 }
 .section__title.is-visible {
   opacity: 1;
@@ -685,21 +704,7 @@ body { padding-left: var(--sidebar-w); }
 
 
 /* ── ALBUM / PORTFOLIO ── */
-.album__heading {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  letter-spacing: -.02em;
-  margin-bottom: 2.5rem;
-  line-height: 1.1;
-}
-.album__heading-sub {
-  display: block;
-  font-size: clamp(.95rem, 2vw, 1.15rem);
-  font-weight: 300;
-  color: var(--ink-soft);
-  letter-spacing: .02em;
-  margin-top: .3rem;
-}
+/* album__heading nahrazeno section__label + section__title */
 
 .album__filters {
   display: flex;

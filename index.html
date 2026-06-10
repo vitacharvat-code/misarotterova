@@ -219,7 +219,8 @@
   <!-- ── PORTFOLIO / ALBUM ── -->
   <section class="section album" id="album">
     <div class="container">
-      <h2 class="album__heading">Portfolio <span class="album__heading-sub">fotoalbum</span></h2>
+      <span class="section__label">Portfolio</span>
+      <p class="section__title">fotoalbum</p>
 
       <div class="album__filters">
         <button class="album__filter is-active" data-filter="all">Vše</button>
@@ -737,7 +738,7 @@
     sections.forEach(s => observer.observe(s));
 
     // Animace prvků při scrollu
-    const animItems = document.querySelectorAll('.sluzby__card, .o-mne__columns, .album__item, .hlasy__card, .section__title');
+    const animItems = document.querySelectorAll('.sluzby__card, .o-mne__columns, .album__item, .hlasy__card, .section__title, .section__label');
     const animObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
