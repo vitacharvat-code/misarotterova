@@ -9,7 +9,7 @@
 :root {
   --white:      #ffffff;
   --bg:         #ffffff;
-  --bg-alt:     #e4cfc6;
+  --bg-alt:     #1a1a1a;
   --ink:        #1a1a1a;
   --ink-mid:    #4a4a4a;
   --ink-soft:   #8a8a8a;
@@ -532,7 +532,7 @@ body { padding-left: var(--sidebar-w); }
   font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
   font-size: clamp(1.5rem, 3vw, 2.2rem);
-  color: var(--ink);
+  color: var(--white);
   text-align: center;
   line-height: 1.6;
   max-width: 820px;
@@ -560,6 +560,11 @@ body { padding-left: var(--sidebar-w); }
 
 /* ── SLUŽBY ── */
 .sluzby { position: relative; overflow: hidden; background: var(--bg-alt); }
+/* Texty nadpisů na tmavém pozadí */
+.sluzby .section__label,
+.reference .section__label { color: var(--white); }
+.sluzby .section__title,
+.reference .section__title { color: rgba(255,255,255,.55); }
 .sluzby::after {
   content: '';
   position: absolute;
@@ -997,13 +1002,13 @@ body { padding-left: var(--sidebar-w); }
   width: 8px; height: 8px;
   border-radius: 50%;
   border: none;
-  background: rgba(0,0,0,.18);
+  background: rgba(255,255,255,.3);
   cursor: pointer;
   transition: var(--transition);
   padding: 0;
 }
 .ref-slider__dot.is-active {
-  background: var(--accent);
+  background: var(--white);
   width: 22px;
   border-radius: 4px;
 }
@@ -1201,7 +1206,7 @@ body { padding-left: var(--sidebar-w); }
   font-size: .82rem;
   font-weight: 500;
   letter-spacing: .02em;
-  color: var(--ink);
+  color: rgba(255,255,255,.75);
 }
 .form__group input,
 .form__group textarea {
