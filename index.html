@@ -61,6 +61,33 @@
     </div>
   </section>
 
+  <!-- ── MARQUEE PÁSKA ── -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-strip__track">
+      <span class="marquee-strip__item">Festival českých rekordů</span>
+      <span class="marquee-strip__item">Divadlo Radost</span>
+      <span class="marquee-strip__item">Janáčkovo divadlo</span>
+      <span class="marquee-strip__item">Rádio Krokodýl</span>
+      <span class="marquee-strip__item">Free Rádio</span>
+      <span class="marquee-strip__item">Děti ráje</span>
+      <span class="marquee-strip__item">Firemní galavečery</span>
+      <span class="marquee-strip__item">Plesy & konference</span>
+      <span class="marquee-strip__item">Městské slavnosti</span>
+      <span class="marquee-strip__item">Rádio Jihlava</span>
+      <!-- duplikát pro bezešvou smyčku -->
+      <span class="marquee-strip__item">Festival českých rekordů</span>
+      <span class="marquee-strip__item">Divadlo Radost</span>
+      <span class="marquee-strip__item">Janáčkovo divadlo</span>
+      <span class="marquee-strip__item">Rádio Krokodýl</span>
+      <span class="marquee-strip__item">Free Rádio</span>
+      <span class="marquee-strip__item">Děti ráje</span>
+      <span class="marquee-strip__item">Firemní galavečery</span>
+      <span class="marquee-strip__item">Plesy & konference</span>
+      <span class="marquee-strip__item">Městské slavnosti</span>
+      <span class="marquee-strip__item">Rádio Jihlava</span>
+    </div>
+  </div>
+
   <!-- ── CITÁT ── -->
   <section class="vyrok">
     <div class="container container--narrow">
@@ -596,6 +623,26 @@
     }
     window.addEventListener('scroll', updateNav, { passive: true });
     updateNav();
+
+    // ── Kinetic text – střídání rolí v hero ──
+    (function() {
+      const el = document.querySelector('.hero__role-primary');
+      if (!el) return;
+      const roles = ['Moderátorka', 'Zpěvačka', 'Herečka', 'Lektorka'];
+      let idx = 0;
+
+      setInterval(() => {
+        // odchod
+        el.classList.add('role--out');
+        setTimeout(() => {
+          idx = (idx + 1) % roles.length;
+          el.textContent = roles[idx];
+          el.classList.remove('role--out');
+          el.classList.add('role--in');
+          setTimeout(() => el.classList.remove('role--in'), 450);
+        }, 300);
+      }, 2600);
+    })();
 
     // ── Reference slider – nekonečný kolotoč ──
     (function() {
