@@ -262,6 +262,11 @@
         <div class="album__item" data-category="zpev"><img src="img/gallery/zpev/12.webp" alt="Zpěv" loading="lazy" /><div class="album__overlay"><span>Zpěv</span></div></div>
       </div>
 
+      <!-- ZOBRAZIT DALŠÍ -->
+      <div class="album__more" id="albumMore">
+        <button class="album__more-btn" id="albumMoreBtn">Zobrazit další</button>
+      </div>
+
       <!-- VIDEO SEKCE -->
       <div class="album__video-section" id="albumVideoSection">
         <div class="album__video-list">
@@ -695,22 +700,26 @@
     animItems.forEach(el => animObserver.observe(el));
 
     // ── ALBUM FILTRY ──
-    const filters = document.querySelectorAll('.album__filter');
-    const albumItems = document.querySelectorAll('.album__item');
-    const albumGrid = document.getElementById('albumGrid');
-    const albumVideoSection = document.getElementById('albumVideoSection');
+    const filters          = document.querySelectorAll('.album__filter');
+    const albumItems       = document.querySelectorAll('.album__item');
+    const albumGrid        = document.getElementById('albumGrid');
+    const albumVideoSection= document.getElementById('albumVideoSection');
+    const albumMoreWrap    = document.getElementById('albumMore');
+    const albumMoreBtn     = document.getElementById('albumMoreBtn');
+    const INITIAL = 16;
 
-    function showRandom20() {
+    function showRandom(count) {
       const all = [...albumItems];
       for (let i = all.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [all[i], all[j]] = [all[j], all[i]];
       }
       albumItems.forEach(item => item.classList.add('is-hidden'));
-      all.slice(0, 20).forEach((item, i) => {
+      all.slice(0, count).forEach((item, i) => {
         item.style.setProperty('--delay', (i % 4) * 60 + 'ms');
         item.classList.remove('is-hidden');
       });
+      albumMoreWrap.style.display = all.length > count ? '' : 'none';
     }
 
     function showPhotoGrid() {
@@ -721,10 +730,20 @@
     function showVideoSection() {
       albumGrid.style.display = 'none';
       albumVideoSection.classList.add('is-active');
+      albumMoreWrap.style.display = 'none';
     }
 
-    // Při načtení stránky zobraz 20 náhodných
-    showRandom20();
+    // Zobrazit další – odkryje všechny fotky
+    albumMoreBtn.addEventListener('click', () => {
+      albumItems.forEach((item, i) => {
+        item.style.setProperty('--delay', (i % 4) * 60 + 'ms');
+        item.classList.remove('is-hidden');
+      });
+      albumMoreWrap.style.display = 'none';
+    });
+
+    // Při načtení stránky zobraz 16 náhodných
+    showRandom(INITIAL);
 
     filters.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -736,8 +755,10 @@
         } else {
           showPhotoGrid();
           if (f === 'all') {
-            showRandom20();
+            showRandom(INITIAL);
           } else {
+            // filtr: zobraz vše v kategorii, tlačítko skryj
+            albumMoreWrap.style.display = 'none';
             albumItems.forEach((item, i) => {
               const show = item.dataset.category === f;
               item.style.setProperty('--delay', (i % 4) * 60 + 'ms');
