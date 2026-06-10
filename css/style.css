@@ -76,7 +76,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 
 /* ── TYPOGRAPHY ── */
-h1, h2, h3 { line-height: 1.15; letter-spacing: -.02em; font-weight: 600; }
+h1, h2, h3 { line-height: 1.15; letter-spacing: -.02em; font-weight: 600; color: var(--blue); }
 h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
 h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: .5rem; }
@@ -130,7 +130,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 }
 .section__title {
   margin-bottom: 3rem;
-  color: var(--ink);
 }
 
 
@@ -506,7 +505,6 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: .06em;
-  color: var(--ink);
   margin-bottom: 0;
 }
 
