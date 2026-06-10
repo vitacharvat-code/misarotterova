@@ -13,8 +13,8 @@
   --ink:        #1a1a1a;
   --ink-mid:    #4a4a4a;
   --ink-soft:   #8a8a8a;
-  --accent:     #e8503a;
-  --accent-hl:  #fde8e4;
+  --accent:     #1a1a1a;
+  --accent-hl:  #e8e8e8;
   --green:      #5e9e84;
   --green-hl:   #e2f0eb;
   --blue:       #4e7fa3;
@@ -331,7 +331,7 @@ body { padding-left: var(--sidebar-w); }
   transition: background var(--transition) !important;
 }
 .nav__cta::after { display: none !important; }
-.nav__cta:hover { background: #cc3e2a !important; }
+.nav__cta:hover { background: #444444 !important; }
 
 .nav__tagline {
   font-size: .75rem;
