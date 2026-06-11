@@ -600,7 +600,7 @@ body { padding-left: var(--sidebar-w); }
 .sluzby .section__label,
 .reference .section__label {
   color: transparent;
-  -webkit-text-stroke: 2px rgba(255,255,255,.85);
+  -webkit-text-stroke: 2px var(--mint);
 }
 .sluzby .section__title,
 .reference .section__title { color: rgba(255,255,255,.5); }
