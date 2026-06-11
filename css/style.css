@@ -661,20 +661,16 @@ body { padding-left: var(--sidebar-w); }
 .sluzby__card:nth-child(3) .sluzby__num { border-color: var(--blue);  color: var(--blue);  }
 .sluzby__card:nth-child(4) .sluzby__num { border-color: var(--green); color: var(--green); }
 
-/* Šipka ↗ */
-.sluzby__arrow {
-  font-size: 1.3rem;
-  line-height: 1;
-  color: var(--ink-soft);
-  transition: color var(--transition), transform var(--transition);
+/* Jemné zvýraznění hlavní služby – 01 Moderování */
+.sluzby__card:first-child {
+  border: 2px solid var(--mint);
+  box-shadow: 0 0 0 4px rgba(126, 202, 197, .15);
 }
-.sluzby__card:hover .sluzby__arrow {
-  color: var(--accent);
-  transform: translate(2px, -2px);
+.sluzby__card:first-child .sluzby__num {
+  background: var(--mint);
+  border-color: var(--mint);
+  color: var(--white);
 }
-.sluzby__card:nth-child(2):hover .sluzby__arrow { color: var(--green); }
-.sluzby__card:nth-child(3):hover .sluzby__arrow { color: var(--blue); }
-.sluzby__card:nth-child(4):hover .sluzby__arrow { color: var(--green); }
 
 /* Nadpis – uppercase bold */
 .sluzby__card h3 {
