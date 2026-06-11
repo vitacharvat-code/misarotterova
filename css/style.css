@@ -1059,15 +1059,7 @@ body { padding-left: var(--sidebar-w); }
 .reference__author span   { font-size: .8rem; color: var(--ink-soft); }
 
 
-/* ── HLASOVÉ UKÁZKY ── */
-.hlasy__title {
-  font-size: 1.5rem;
-  margin: .75rem 0 .4rem;
-}
-.hlasy__subtitle {
-  margin-bottom: 2rem;
-  font-size: .95rem;
-}
+/* ── HLASOVÉ UKÁZKY (bílá sekce) ── */
 .hlasy__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1075,6 +1067,7 @@ body { padding-left: var(--sidebar-w); }
 }
 .hlasy__card {
   background: var(--white);
+  border: 1px solid rgba(0,0,0,.08);
   border-radius: var(--radius-lg);
   padding: 1.75rem;
   display: flex;
