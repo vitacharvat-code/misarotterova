@@ -560,20 +560,20 @@ body { padding-left: var(--sidebar-w); }
 
 /* ── CITÁT ── */
 .vyrok {
-  padding: 4.5rem 0;
+  padding: 2.5rem 0;
   background: var(--bg-alt);
 }
 .vyrok__text {
   font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
   font-size: clamp(1.5rem, 3vw, 2.2rem);
-  color: var(--white);
+  color: var(--mint);
   text-align: center;
   line-height: 1.6;
   max-width: 820px;
-  margin: 0 auto;
+  margin: 4.5rem auto 0;
   position: relative;
-  padding-top: 3rem;
+  padding-top: 1.5rem;
 }
 .vyrok__text--playfair::before {
   content: '\201C';
