@@ -639,25 +639,7 @@
     // Zavřít po kliknutí na odkaz
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
 
-    // ── Kinetic text – střídání rolí v hero ──
-    (function() {
-      const el = document.querySelector('.hero__role-primary');
-      if (!el) return;
-      const roles = ['Moderátorka', 'Zpěvačka', 'Herečka', 'Lektorka'];
-      let idx = 0;
-
-      setInterval(() => {
-        // odchod
-        el.classList.add('role--out');
-        setTimeout(() => {
-          idx = (idx + 1) % roles.length;
-          el.textContent = roles[idx];
-          el.classList.remove('role--out');
-          el.classList.add('role--in');
-          setTimeout(() => el.classList.remove('role--in'), 450);
-        }, 300);
-      }, 2600);
-    })();
+    // kinetic text odstraněn – zůstává jen "Moderátorka" s CSS animací
 
     // ── Reference slider – nekonečný kolotoč ──
     (function() {
