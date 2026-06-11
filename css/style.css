@@ -1362,7 +1362,8 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   .hero { align-items: flex-end; }
   .hero__overlay {
     background:
-      linear-gradient(to top, rgba(8,8,8,.92) 0%, rgba(8,8,8,.5) 38%, rgba(8,8,8,.1) 65%, transparent 85%);
+      linear-gradient(rgba(8,8,8,.45), rgba(8,8,8,.45)),
+      linear-gradient(to top, rgba(8,8,8,.92) 0%, rgba(8,8,8,.55) 38%, rgba(8,8,8,.15) 70%, transparent 90%);
   }
   .hero__content { padding-bottom: 4rem; }
   .hero__text { max-width: 100%; }
