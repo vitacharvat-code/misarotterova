@@ -598,12 +598,14 @@ body { padding-left: var(--sidebar-w); }
 /* Texty nadpisů na tmavém pozadí */
 /* Na tmavých sekcích: outline text efekt na label */
 .sluzby .section__label,
-.reference .section__label {
+.reference .section__label,
+.kontakt .section__label {
   color: transparent;
   -webkit-text-stroke: 2px var(--mint);
 }
 .sluzby .section__title,
-.reference .section__title { color: rgba(255,255,255,.5); }
+.reference .section__title,
+.kontakt .section__title { color: rgba(255,255,255,.5); }
 /* dekorativní tečky odstraněny */
 
 .sluzby__grid {
@@ -1145,7 +1147,22 @@ body { padding-left: var(--sidebar-w); }
 /* ── KONTAKT ── */
 
 /* Kontakt */
-#kontakt { position: relative; overflow: hidden; }
+#kontakt { position: relative; overflow: hidden; background: var(--bg-alt); }
+
+/* Texty na tmavém pozadí kontaktu */
+.kontakt .kontakt__intro { color: rgba(255,255,255,.7); }
+.kontakt .kontakt__details svg { color: rgba(255,255,255,.45); }
+.kontakt .kontakt__details a { color: rgba(255,255,255,.7); }
+.kontakt .kontakt__details a:hover { color: var(--white); }
+.kontakt .kontakt__social a {
+  color: rgba(255,255,255,.7);
+  border-color: rgba(255,255,255,.2);
+}
+.kontakt .kontakt__social a:hover {
+  color: var(--white);
+  border-color: var(--white);
+  background: rgba(255,255,255,.08);
+}
 
 .kontakt__layout {
   display: grid;
@@ -1201,9 +1218,9 @@ body { padding-left: var(--sidebar-w); }
 .kontakt__social svg { width: 16px; height: 16px; }
 
 
-/* ── FORM ── */
+/* ── FORM (bílá karta na tmavé sekci) ── */
 .kontakt__form {
-  background: var(--bg-alt);
+  background: var(--white);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   display: flex;
@@ -1224,7 +1241,7 @@ body { padding-left: var(--sidebar-w); }
   font-size: .82rem;
   font-weight: 500;
   letter-spacing: .02em;
-  color: rgba(255,255,255,.75);
+  color: var(--ink);
 }
 .form__group input,
 .form__group textarea {
@@ -1249,15 +1266,16 @@ body { padding-left: var(--sidebar-w); }
 }
 
 
-/* ── FOOTER ── */
+/* ── FOOTER (tmavý, navazuje na kontakt) ── */
 .footer {
   padding: 2rem 0;
-  border-top: 1px solid rgba(0,0,0,.06);
+  background: var(--bg-alt);
+  border-top: 1px solid rgba(255,255,255,.08);
 }
 .footer p {
   text-align: center;
   font-size: .82rem;
-  color: var(--ink-soft);
+  color: rgba(255,255,255,.4);
 }
 
 
