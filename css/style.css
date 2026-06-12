@@ -425,9 +425,9 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   align-items: center;
   flex-wrap: wrap;
   gap: .35rem .55rem;
-  font-size: .78rem;
+  font-size: 1rem;
   font-weight: 400;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.55);
   margin-bottom: 2.5rem;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -448,6 +448,34 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   transition: var(--transition);
 }
 .btn--light:hover { background: var(--accent-hl); }
+
+/* Tlačítka v hero vedle sebe */
+.hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Invertní varianta – průhledné s bílým rámečkem */
+.btn--outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,.7);
+  border-radius: 4px;
+  padding: .85rem 2rem;
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  transition: var(--transition);
+}
+.btn--outline:hover {
+  background: var(--white);
+  color: var(--ink);
+  border-color: var(--white);
+}
 
 /* ── HERO SOCIALS STRIP ── */
 .hero__socials {
