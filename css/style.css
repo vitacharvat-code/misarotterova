@@ -247,10 +247,11 @@ p.section__title,
   padding: 0 1.5rem;
 }
 .nav__logo {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-family: 'Barlow Condensed', 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
   color: var(--white);
   text-decoration: none;
   line-height: 1.25;
@@ -1307,9 +1308,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
     z-index: 160;
   }
   .mobile-bar .nav__logo {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.05rem;
+    font-size: 1.25rem;
   }
 
   /* Menu jako vysouvací panel zleva */
