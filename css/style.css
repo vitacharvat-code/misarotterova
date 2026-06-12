@@ -172,7 +172,7 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 .section__label {
   display: block;
   font-family: 'Barlow Condensed', 'Inter', sans-serif;
-  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-size: clamp(4.2rem, 9.5vw, 9rem);
   font-weight: 900;
   letter-spacing: .04em;
   text-transform: uppercase;
