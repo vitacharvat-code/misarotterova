@@ -210,6 +210,9 @@ p.section__title,
   transform: translateY(0);
 }
 
+/* O mně: úvodní text blíž k nadpisu */
+.o-mne .section__title { margin-bottom: 1.25rem; }
+
 
 /* ── NAVIGATION (horní lišta) ── */
 
@@ -531,7 +534,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+  align-items: start;
   opacity: 0;
   transform: translateY(28px);
   transition: opacity .6s ease, transform .6s ease;
