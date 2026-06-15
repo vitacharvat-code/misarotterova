@@ -567,14 +567,19 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
 .o-mne__credentials {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.25rem;
   margin-top: 3.5rem;
 }
 .o-mne__cred {
   display: flex;
   flex-direction: column;
   gap: .4rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: var(--radius);
+  transition: border-color var(--transition);
 }
+.o-mne__cred:hover { border-color: var(--mint); }
 .o-mne__cred strong {
   font-size: 1.35rem;
   font-weight: 700;
