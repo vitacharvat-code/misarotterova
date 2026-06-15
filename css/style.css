@@ -628,6 +628,57 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
 .vyrok { overflow: hidden; position: relative; }
 
 
+/* ── VÝČET AKCÍ (pod referencemi) ── */
+.akce {
+  margin-top: 4.5rem;
+  position: relative;
+  z-index: 1;
+}
+.akce__intro {
+  text-align: center;
+  font-family: 'Barlow Condensed', 'Inter', sans-serif;
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--white);
+  margin-bottom: 2.25rem;
+}
+.akce__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .85rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+.akce__list li {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .9rem 1.1rem;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radius);
+  font-size: .92rem;
+  color: rgba(255,255,255,.8);
+  line-height: 1.35;
+  transition: border-color var(--transition), color var(--transition);
+}
+.akce__list li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+.akce__list li:hover {
+  border-color: var(--mint);
+  color: var(--white);
+}
+
+
 /* ── SLUŽBY ── */
 .sluzby { position: relative; overflow: hidden; background: var(--bg-alt); }
 /* Texty nadpisů na tmavém pozadí */
@@ -1451,6 +1502,10 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   /* Audio */
   .hlasy__grid { grid-template-columns: 1fr; }
   .progress-wrap { width: 100%; }
+
+  /* Výčet akcí */
+  .akce { margin-top: 3rem; }
+  .akce__list { grid-template-columns: 1fr; gap: .6rem; }
 
   /* Kontakt */
   .kontakt__layout {
