@@ -743,13 +743,16 @@
       albumMoreWrap.style.display = 'none';
     }
 
-    // Zobrazit další – odkryje všechny fotky
+    // Zobrazit další – odkryje vždy dalších 10 fotek v pořadí
+    const STEP = 10;
     albumMoreBtn.addEventListener('click', () => {
-      albumItems.forEach((item, i) => {
+      const hidden = [...albumItems].filter(it => it.classList.contains('is-hidden'));
+      hidden.slice(0, STEP).forEach((item, i) => {
         item.style.setProperty('--delay', (i % 4) * 60 + 'ms');
         item.classList.remove('is-hidden');
       });
-      albumMoreWrap.style.display = 'none';
+      const stillHidden = [...albumItems].some(it => it.classList.contains('is-hidden'));
+      albumMoreWrap.style.display = stillHidden ? '' : 'none';
     });
 
     // Při načtení stránky zobraz pevný kurátorský výběr
