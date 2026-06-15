@@ -544,10 +544,10 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
 .o-mne__text p { margin-bottom: 1.2rem; }
 .o-mne__text p:last-child { margin-bottom: 0; }
 .o-mne__text .o-mne__highlight {
-  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
   font-weight: 700;
-  color: var(--mint);
-  line-height: 1.4;
+  color: var(--ink-soft);
+  line-height: 1.6;
   margin-top: 1.6rem;
 }
 
