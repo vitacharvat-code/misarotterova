@@ -727,6 +727,33 @@
     const albumMoreWrap    = document.getElementById('albumMore');
     const albumMoreBtn     = document.getElementById('albumMoreBtn');
 
+    // ── MASONRY: zachování orientace fotek (výška/šířka) ──
+    const ROW_GAP = 16;   // px, svislá mezera mezi fotkami (1rem); grid-auto-rows = 1px
+    function spanItem(item) {
+      const img = item.querySelector('img');
+      if (!img) return;
+      const h = img.getBoundingClientRect().height;
+      if (!h) return;      // ještě nenačteno / skryté
+      item.style.gridRowEnd = 'span ' + (Math.ceil(h) + ROW_GAP);
+    }
+    function layoutMasonry() {
+      albumItems.forEach(item => {
+        if (!item.classList.contains('is-hidden')) spanItem(item);
+      });
+    }
+    // přepočítej, jakmile se fotka načte
+    albumItems.forEach(item => {
+      const img = item.querySelector('img');
+      if (!img) return;
+      if (img.complete) spanItem(item);
+      img.addEventListener('load', () => spanItem(item));
+    });
+    let masonryTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(masonryTimer);
+      masonryTimer = setTimeout(layoutMasonry, 120);
+    });
+
     // Vždy zobrazený kurátorský výběr (pevné pořadí dané pořadím v DOM)
     function showFeatured() {
       const featured = [...albumItems].filter(it => it.classList.contains('is-featured'));
@@ -736,6 +763,7 @@
         item.classList.remove('is-hidden');
       });
       albumMoreWrap.style.display = albumItems.length > featured.length ? '' : 'none';
+      layoutMasonry();
     }
 
     function showPhotoGrid() {
@@ -759,6 +787,7 @@
       });
       const stillHidden = [...albumItems].some(it => it.classList.contains('is-hidden'));
       albumMoreWrap.style.display = stillHidden ? '' : 'none';
+      layoutMasonry();
     });
 
     // Při načtení stránky zobraz pevný kurátorský výběr
@@ -783,6 +812,7 @@
               item.style.setProperty('--delay', (i % 4) * 60 + 'ms');
               item.classList.toggle('is-hidden', !show);
             });
+            layoutMasonry();
           }
         }
       });
