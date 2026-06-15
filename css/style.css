@@ -800,7 +800,34 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   display: flex;
   flex-direction: column;
   gap: .5rem;
+}
+
+/* CTA odkaz v patičce karty */
+.sluzby__cta {
   margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-family: 'Barlow Condensed', 'Inter', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: 1rem;
+  color: var(--accent);
+  padding: .35rem 0;
+  border-bottom: 2px solid var(--mint);
+  transition: gap var(--transition), color var(--transition);
+}
+.sluzby__cta span {
+  transition: transform var(--transition);
+}
+.sluzby__cta:hover {
+  gap: .75rem;
+  color: var(--mint);
+}
+.sluzby__cta:hover span {
+  transform: translateX(3px);
 }
 .sluzby__list li {
   display: flex;
