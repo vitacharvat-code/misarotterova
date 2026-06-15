@@ -548,7 +548,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   font-weight: 400;
   letter-spacing: .01em;
-  color: var(--ink-soft);
+  color: var(--mint);
   line-height: 1.6;
   margin-top: 1.6rem;
 }
