@@ -167,6 +167,8 @@ p  { color: var(--ink-mid); font-size: 1rem; line-height: 1.75; }
 
 /* ── SECTION SHARED ── */
 .section { padding: 6rem 0; }
+/* O mně: menší horní odsazení, ať se při dojetí na #o-mne vejde i fotka */
+.o-mne { padding-top: 3rem; }
 
 /* čisté bílé sekce — bez vzoru */
 .section__label {
@@ -554,7 +556,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
 }
 
 .o-mne__portrait {
-  height: 480px;
+  height: 440px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
