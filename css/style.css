@@ -895,16 +895,16 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
 }
 
 .album__grid {
-  columns: 4;
-  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
 }
 .album__item {
   position: relative;
-  break-inside: avoid;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius);
   overflow: hidden;
   cursor: pointer;
-  margin-bottom: 1rem;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity .45s ease calc(var(--delay, 0ms)),
@@ -962,7 +962,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
 }
 .album__item img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: cover;
   transition: transform .5s ease;
@@ -1405,7 +1405,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   .galerie__item--wide { grid-column: span 2; }
   .galerie__item--tall { grid-row: span 1; }
 
-  .album__grid { columns: 3; }
+  .album__grid { grid-template-columns: repeat(3, 1fr); }
   .hlasy__grid { grid-template-columns: repeat(2, 1fr); }
   .ref-slider { max-width: 100%; }
 }
@@ -1513,7 +1513,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   .sluzby__grid { grid-template-columns: 1fr; }
 
   /* Album */
-  .album__grid { columns: 2; }
+  .album__grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Reference – 1 karta na mobilu, menší fade zóna */
   .ref-slider {
@@ -1545,7 +1545,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
 
 /* Small mobile */
 @media (max-width: 480px) {
-  .album__grid { columns: 2; }
+  .album__grid { grid-template-columns: repeat(2, 1fr); }
   .lightbox__nav { display: none; }
   .galerie__grid {
     grid-template-columns: 1fr;
