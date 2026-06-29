@@ -984,6 +984,10 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   height: 0;
   background: #000;
 }
+/* ultrawide showreel (2560×1080 ≈ 21:9) */
+.album__video-embed--ultrawide {
+  padding-bottom: 42.19%;
+}
 .album__video-embed iframe {
   position: absolute;
   top: 0; left: 0;
