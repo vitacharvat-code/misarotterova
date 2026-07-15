@@ -961,19 +961,21 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   border: none;
 }
 
-/* ── VIDEO ZÁLOŽKA ── */
-.album__video-section {
-  display: none;
+/* ── SHOWREEL ── */
+.album__showreel {
+  margin-top: 4rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.album__video-section.is-active {
-  display: block;
-}
-.album__video-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  max-width: 860px;
-  margin: 0 auto;
+.album__showreel-title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 900;
+  color: var(--mint);
+  margin-bottom: 1.5rem;
 }
 .album__video-embed {
   border-radius: var(--radius-lg);

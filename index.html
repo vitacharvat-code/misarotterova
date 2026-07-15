@@ -217,7 +217,6 @@
         <button class="album__filter" data-filter="zpev">Zpěv</button>
         <button class="album__filter" data-filter="mood">Mood</button>
         <button class="album__filter" data-filter="divadlo">Divadlo</button>
-        <button class="album__filter" data-filter="video">▶ Video</button>
       </div>
 
       <div class="album__grid" id="albumGrid">
@@ -287,19 +286,18 @@
         <button class="album__more-btn" id="albumMoreBtn">Zobrazit další</button>
       </div>
 
-      <!-- VIDEO SEKCE -->
-      <div class="album__video-section" id="albumVideoSection">
-        <div class="album__video-list">
-          <div class="album__video-embed album__video-embed--ultrawide">
-            <iframe
-              src="https://player.vimeo.com/video/1209981149?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-              title="Míša Rotterová Showreel"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
+      <!-- SHOWREEL -->
+      <div class="album__showreel">
+        <h3 class="album__showreel-title">Showreel</h3>
+        <div class="album__video-embed album__video-embed--ultrawide">
+          <iframe
+            src="https://player.vimeo.com/video/1209981149?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            title="Míša Rotterová Showreel"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
       </div>
 
@@ -736,7 +734,6 @@
     const filters          = document.querySelectorAll('.album__filter');
     const albumItems       = document.querySelectorAll('.album__item');
     const albumGrid        = document.getElementById('albumGrid');
-    const albumVideoSection= document.getElementById('albumVideoSection');
     const albumMoreWrap    = document.getElementById('albumMore');
     const albumMoreBtn     = document.getElementById('albumMoreBtn');
 
@@ -779,17 +776,6 @@
       layoutMasonry();
     }
 
-    function showPhotoGrid() {
-      albumGrid.style.display = '';
-      albumVideoSection.classList.remove('is-active');
-    }
-
-    function showVideoSection() {
-      albumGrid.style.display = 'none';
-      albumVideoSection.classList.add('is-active');
-      albumMoreWrap.style.display = 'none';
-    }
-
     // Zobrazit další – odkryje vždy dalších 10 fotek v pořadí
     const STEP = 10;
     albumMoreBtn.addEventListener('click', () => {
@@ -811,22 +797,17 @@
         filters.forEach(b => b.classList.remove('is-active'));
         btn.classList.add('is-active');
         const f = btn.dataset.filter;
-        if (f === 'video') {
-          showVideoSection();
+        if (f === 'all') {
+          showFeatured();
         } else {
-          showPhotoGrid();
-          if (f === 'all') {
-            showFeatured();
-          } else {
-            // filtr: zobraz vše v kategorii, tlačítko skryj
-            albumMoreWrap.style.display = 'none';
-            albumItems.forEach((item, i) => {
-              const show = item.dataset.category === f;
-              item.style.setProperty('--delay', (i % 4) * 60 + 'ms');
-              item.classList.toggle('is-hidden', !show);
-            });
-            layoutMasonry();
-          }
+          // filtr: zobraz vše v kategorii, tlačítko skryj
+          albumMoreWrap.style.display = 'none';
+          albumItems.forEach((item, i) => {
+            const show = item.dataset.category === f;
+            item.style.setProperty('--delay', (i % 4) * 60 + 'ms');
+            item.classList.toggle('is-hidden', !show);
+          });
+          layoutMasonry();
         }
       });
     });
