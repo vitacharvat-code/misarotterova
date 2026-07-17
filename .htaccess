@@ -1,0 +1,32 @@
+# Výchozí dokument – statický web
+DirectoryIndex index.html
+
+# ── Bezpečnostní hlavičky ──
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ── Zablokovat přístup ke zbytkům WordPressu (kdyby na serveru zůstaly) ──
+<FilesMatch "^(wp-login|wp-config|wp-settings|wp-load|xmlrpc)\.php$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ── Zablokovat citlivé soubory ──
+<FilesMatch "\.(ini|log|sh|bak|sql|env)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>

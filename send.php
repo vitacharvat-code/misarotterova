@@ -52,6 +52,17 @@ foreach ([$name, $email, $subject] as $v) {
     }
 }
 
+// Rozumné délkové limity (proti zahlcení)
+if (mb_strlen($name) > 100 || mb_strlen($subject) > 150 || mb_strlen($message) > 5000) {
+    fail('Zpráva je příliš dlouhá.');
+}
+
+// Anti-spam: příliš mnoho odkazů = skoro jistě spam
+if (preg_match_all('~https?://~i', $message) > 4) {
+    // předstíráme úspěch, ať spammer nezkouší dál
+    ok('Děkuji, zpráva byla odeslána.');
+}
+
 // Sestavení e-mailu
 $mailSubject = $subject !== ''
     ? 'Web – ' . $subject
