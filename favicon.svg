@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#1a1a1a"/>
+  <text x="32" y="33" fill="#7ecac5" font-family="'Barlow Condensed','Arial Narrow',Helvetica,Arial,sans-serif"
+        font-size="42" font-weight="800" letter-spacing="-1"
+        text-anchor="middle" dominant-baseline="central">MR</text>
+</svg>
