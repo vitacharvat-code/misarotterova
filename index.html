@@ -585,7 +585,10 @@
             <label for="message">Zpráva</label>
             <textarea id="message" name="message" rows="5" placeholder="Napište mi o vaší akci nebo projektu…" required></textarea>
           </div>
+          <!-- honeypot proti spamu (skryté, lidé nevyplní) -->
+          <input type="text" name="website" class="form__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <button type="submit" class="btn btn--dark btn--full">Odeslat zprávu</button>
+          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
 
       </div>
@@ -917,6 +920,52 @@
         currentAudio.currentTime = pct * currentAudio.duration;
       });
     });
+
+    // ── KONTAKTNÍ FORMULÁŘ (odeslání přes send.php) ──
+    (function() {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+      const status = document.getElementById('formStatus');
+      const btn = form.querySelector('button[type="submit"]');
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        status.className = 'form__status';
+        status.textContent = '';
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        btn.disabled = true;
+        const original = btn.textContent;
+        btn.textContent = 'Odesílám…';
+
+        try {
+          const res = await fetch('send.php', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          });
+          const data = await res.json().catch(() => ({}));
+          if (res.ok && data.ok) {
+            form.reset();
+            status.className = 'form__status is-success';
+            status.textContent = data.message || 'Děkuji, zpráva byla odeslána. Ozvu se co nejdříve.';
+          } else {
+            status.className = 'form__status is-error';
+            status.textContent = (data && data.message) || 'Zprávu se nepodařilo odeslat. Zkuste to prosím znovu, nebo napište přímo na misa.rotterova@gmail.com.';
+          }
+        } catch (err) {
+          status.className = 'form__status is-error';
+          status.textContent = 'Zprávu se nepodařilo odeslat. Zkuste to prosím znovu, nebo napište přímo na misa.rotterova@gmail.com.';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = original;
+        }
+      });
+    })();
   </script>
 
 </body>
